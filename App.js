@@ -3,27 +3,45 @@ import { StyleSheet, Text, View } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import { FontAwesome } from '@expo/vector-icons';
 
-class App extends React.Component {
+class Home extends React.Component {
 	render() {
 		return (
 			<View style={styles.container}>
-				<Text></Text>
+				<Text>Home</Text>
 			</View>
 		);
 	}
-};
+}
+
+class Profile extends React.Component {
+	render() {
+		return (
+			<View style={styles.container}>
+				<Text>
+					Profiel
+				</Text>
+			</View>
+		)
+	}
+}
 
 export default createBottomTabNavigator({
-	Home: App
+	Home,
+	Profile
 },
 	{
-		navigationOptions: ({ navgation }) => ({
+		navigationOptions: ({ navigation }) => ({
 			tabBarIcon: ({ focused, tintColor }) => {
 				const { routeName } = navigation.state;
 				let iconName;
 				switch (routeName) {
 					case 'Home':
 						iconName = 'search';
+						break;
+					case 'Profile':
+						iconName = 'user-o';
+						break;
+
 				}
 				return <FontAwesome name={iconName} size={25} color={tintColor} />
 			}
